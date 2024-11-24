@@ -1,0 +1,212 @@
+2024-10-12 18:45:38 - ERROR - Необработанная ошибка: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1785, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1767, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\ctx.py", line 351, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+
+2024-10-12 19:12:05 - ERROR - Необработанная ошибка: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1785, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1767, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\ctx.py", line 351, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+
+2024-10-12 19:12:24 - ERROR - Необработанная ошибка: division by zero
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 295, in error_router
+    return self.handle_error(e)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 310, in handle_error
+    _handle_flask_propagate_exceptions_config(current_app, e)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\schedule_student_res.py", line 9, in post
+    inga = 5 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+
+
+2024-10-12 19:12:47 - ERROR - Произошла ошибка: [WinError 2] Не удается найти указанный файл: 'D:\\PythonProjects\\FaceRecognizerServer\\files/pictures/logosdf.jpg'
+
+
+2024-10-12 19:12:47 - ERROR - Необработанная ошибка: 404
+Traceback (most recent call last):
+  File "D:\PythonProjects\FaceRecognizerServer\main.py", line 100, in loadPict
+    return send_file(filename, mimetype=f'image/{parts[1]}')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\helpers.py", line 537, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\werkzeug\utils.py", line 440, in send_file
+    stat = os.stat(path)
+           ^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] Не удается найти указанный файл: 'D:\\PythonProjects\\FaceRecognizerServer\\files/pictures/logosdf.jpg'
+
+
+2024-10-12 19:12:47 - ERROR - Необработанная ошибка: 'int' object has no attribute 'code'
+Traceback (most recent call last):
+  File "D:\PythonProjects\FaceRecognizerServer\main.py", line 100, in loadPict
+    return send_file(filename, mimetype=f'image/{parts[1]}')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\helpers.py", line 537, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\werkzeug\utils.py", line 440, in send_file
+    stat = os.stat(path)
+           ^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] Не удается найти указанный файл: 'D:\\PythonProjects\\FaceRecognizerServer\\files/pictures/logosdf.jpg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\main.py", line 103, in loadPict
+    return handle_exception(404)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\main.py", line 67, in handle_exception
+    if e.code == 404:
+       ^^^^^^
+AttributeError: 'int' object has no attribute 'code'
+
+
+2024-10-12 19:20:30 - ERROR - Необработанная ошибка: division by zero
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 295, in error_router
+    return self.handle_error(e)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 310, in handle_error
+    _handle_flask_propagate_exceptions_config(current_app, e)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\schedule_student_res.py", line 9, in post
+    inga = 5 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+
+
+2024-10-12 19:20:57 - ERROR - Необработанная ошибка: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1785, in dispatch_request
+    self.raise_routing_exception(req)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1767, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\ctx.py", line 351, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+
+2024-10-12 19:21:04 - ERROR - Произошла ошибка: [WinError 2] Не удается найти указанный файл: 'D:\\PythonProjects\\FaceRecognizerServer\\files/pictures/logosdf.jpg'
+
+
+2024-10-12 19:21:04 - ERROR - Необработанная ошибка: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\PythonProjects\FaceRecognizerServer\main.py", line 102, in loadPict
+    return send_file(filename, mimetype=f'image/{parts[1]}')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\helpers.py", line 537, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\werkzeug\utils.py", line 440, in send_file
+    stat = os.stat(path)
+           ^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] Не удается найти указанный файл: 'D:\\PythonProjects\\FaceRecognizerServer\\files/pictures/logosdf.jpg'
+
+
+2024-10-12 20:37:18 - ERROR - Необработанная ошибка: ApiConnector.getGroupScheduleById() missing 1 required positional argument: 'week_end'
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 295, in error_router
+    return self.handle_error(e)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 310, in handle_error
+    _handle_flask_propagate_exceptions_config(current_app, e)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\admin_schedule_group_res.py", line 18, in post
+    json_model = self.api_connector.getGroupScheduleById(group_id, date_start, date_end)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ApiConnector.getGroupScheduleById() missing 1 required positional argument: 'week_end'
+
+
+2024-10-12 23:32:43 - ERROR - Ошибка при отправке события: 403, Access Denied
+
+
+2024-10-12 23:34:04 - ERROR - Ошибка при отправке события: 400, event_json has incorrect value
+
+
+2024-10-12 23:36:10 - ERROR - Ошибка при отправке события: 400, event_json has incorrect value
+
+

@@ -1,0 +1,114 @@
+2024-10-17 05:08:07 - ERROR - Необработанная ошибка: Entity namespace for "schedule" has no property "data"
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\sqlalchemy\sql\base.py", line 1694, in _entity_namespace_key
+    return getattr(ns, key)
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'ScheduleDB' has no attribute 'data'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 295, in error_router
+    return self.handle_error(e)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 310, in handle_error
+    _handle_flask_propagate_exceptions_config(current_app, e)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\admin_schedule_actions_res.py", line 20, in post
+    json_model = self.api_connector.createSchedule(date_schedule=date, time_start=time_start, time_end=time_end,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\api_connection\api_connector.py", line 649, in createSchedule
+    schedule = self.db_class.createSchedule(date_schedule=date_schedule, time_start=time_start, time_end=time_end,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\db_connection\db_class.py", line 595, in createSchedule
+    schedule: ScheduleDB = self.session.query(ScheduleDB).filter_by(data=date_schedule, time_start=time_start,
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\sqlalchemy\orm\query.py", line 1802, in filter_by
+    clauses = [
+              ^
+  File "D:\anaconda3\Lib\site-packages\sqlalchemy\orm\query.py", line 1803, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\sqlalchemy\sql\base.py", line 1696, in _entity_namespace_key
+    util.raise_(
+  File "D:\anaconda3\Lib\site-packages\sqlalchemy\util\compat.py", line 208, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "schedule" has no property "data"
+
+
+2024-10-17 05:10:04 - ERROR - Необработанная ошибка: __init__() takes 1 positional argument but 9 were given
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 295, in error_router
+    return self.handle_error(e)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 310, in handle_error
+    _handle_flask_propagate_exceptions_config(current_app, e)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\admin_schedule_actions_res.py", line 20, in post
+    json_model = self.api_connector.createSchedule(date_schedule=date, time_start=time_start, time_end=time_end,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\api_connection\api_connector.py", line 649, in createSchedule
+    schedule = self.db_class.createSchedule(date_schedule=date_schedule, time_start=time_start, time_end=time_end,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\db_connection\db_class.py", line 603, in createSchedule
+    schedule: ScheduleDB = ScheduleDB(new_id, date_schedule, time_start, time_end, group_id, subject_id, teacher_id,
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __init__() takes 1 positional argument but 9 were given
+
+
+2024-10-17 05:18:01 - ERROR - Необработанная ошибка: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+Traceback (most recent call last):
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 295, in error_router
+    return self.handle_error(e)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 310, in handle_error
+    _handle_flask_propagate_exceptions_config(current_app, e)
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda3\Lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\admin_schedule_actions_res.py", line 43, in put
+    schedule_id: int = int(request.form.get('schedule_id'))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+
+
