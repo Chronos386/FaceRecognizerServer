@@ -1,0 +1,23 @@
+2024-11-25 23:32:52 - ERROR - Необработанная ошибка: 'DBClass' object has no attribute '__getSession'
+Traceback (most recent call last):
+  File "D:\PythonProjects\FaceRecognizerServer\.venv\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\PythonProjects\FaceRecognizerServer\.venv\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\PythonProjects\FaceRecognizerServer\.venv\lib\site-packages\flask_restful\__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "D:\PythonProjects\FaceRecognizerServer\.venv\lib\site-packages\flask\views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+  File "D:\PythonProjects\FaceRecognizerServer\.venv\lib\site-packages\flask_restful\__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\user_acc_res.py", line 23, in put
+    acc_id, error_response = self.check_user_access(hash_user)
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\resources\main_res.py", line 32, in check_user_access
+    acc_id: Optional[int] = self.api_connector.getAccIdByHash(hash_admin)
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\api_connection\api_connector.py", line 206, in getAccIdByHash
+    account: Optional[AccountsDB] = self.db_class.getAccByHash(key)
+  File "D:\PythonProjects\FaceRecognizerServer\source_code\db_connection\db_class.py", line 27, in wrapper
+    with self.__getSession() as session:
+AttributeError: 'DBClass' object has no attribute '__getSession'
+
+

@@ -1,6 +1,7 @@
 import cv2
 import time
 import faiss
+import threading
 import numpy as np
 from typing import Optional, Tuple, List
 from insightface.app import FaceAnalysis
@@ -10,15 +11,21 @@ from source_code.utils.logger_file import logger
 
 class FaceRecognizer:
     def __init__(self):
-        self.app = FaceAnalysis(allowed_modules=['detection', 'recognition'], providers=['CPUExecutionProvider'])
-        self.app.prepare(ctx_id=-1)
+        self.local = threading.local()
+
+    def __getApp(self):
+        if not hasattr(self.local, "app"):
+            self.local.app = FaceAnalysis(allowed_modules=['detection', 'recognition'], providers=['CPUExecutionProvider'])
+            self.local.app.prepare(ctx_id=-1)
+        return self.local.app
 
     def __getFaceEmbedding(self, img: cv2.typing.MatLike) -> Tuple[Optional[np.ndarray], int]:
         if img is None:
             logger.error(f"Не удалось загрузить изображение", exc_info=True)
             return None, 1
         img_1 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        faces = self.app.get(img_1)
+        app = self.__getApp()
+        faces = app.get(img_1)
         if len(faces) == 0:
             logger.error(f"Лицо не обнаружено на изображении", exc_info=True)
             return None, 2
