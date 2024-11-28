@@ -1,6 +1,7 @@
 import json
 import time
 import requests
+import threading
 from source_code.utils.logger_file import logger
 
 
@@ -11,7 +12,7 @@ class AppMetricaReporter:
         self.appmetrica_device_id = 14766913885733900580
         self.url = "https://api.appmetrica.yandex.ru/logs/v1/import/events"
 
-    def sendEvent(self, event_name: str, event_json: dict):
+    def __send_event_worker(self, event_name: str, event_json: dict):
         event_timestamp = int(time.time())
         params = {
             "post_api_key": self.post_api_key,
@@ -22,6 +23,13 @@ class AppMetricaReporter:
             "event_json": json.dumps(event_json, ensure_ascii=False),
             "session_type": "foreground"
         }
-        response = requests.post(self.url, params=params)
-        if response.status_code != 200:
-            logger.error(f"Ошибка при отправке события: {response.status_code}, {response.text}")
+        try:
+            response = requests.post(self.url, params=params)
+            if response.status_code != 200:
+                logger.error(f"Ошибка при отправке события: {response.status_code}, {response.text}")
+        except Exception as e:
+            logger.error(f"Ошибка при отправке события: {e}")
+
+    def sendEvent(self, event_name: str, event_json: dict):
+        thread = threading.Thread(target=self.__send_event_worker, args=(event_name, event_json), daemon=True)
+        thread.start()

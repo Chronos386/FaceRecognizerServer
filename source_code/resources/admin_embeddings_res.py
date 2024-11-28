@@ -1,12 +1,11 @@
 import json
 from typing import List
-from flask import Response, request, jsonify
+from flask import Response, request
 from werkzeug.datastructures import FileStorage
 from source_code.resources.main_res import MainRes
 
 
 class AdminEmbeddingsRes(MainRes):
-    # Получение всех корпусов
     def post(self):
         hash_admin: str = request.form.get('hash')
         acc_id, error_response = self.check_admin_access(hash_admin)
