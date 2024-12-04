@@ -8,11 +8,11 @@ class AttendanceDeviceRes(MainRes):
         device_id: int = int(request.form.get('device_id'))
         current_datetime = self.getDateTime()
         if current_datetime is None:
-            return Response(response={"error": "Wrong datetime format"}, status=500)
+            return Response(response={"error: Wrong datetime format"}, status=500)
 
         file = request.files.get('file')
         if file is None:
-            return Response(response={"error": "No file"}, status=500)
+            return Response(response={"error: No file"}, status=500)
 
         code, student_id, schedule_id, json_model = self.api_connector.markAttendanceByPhoto(
             file, current_datetime, device_id)
@@ -39,16 +39,16 @@ class AttendanceDeviceRes(MainRes):
     @staticmethod
     def __getErrorResponseByCode(code) -> Response:
         if code == 1:
-            return Response(response={"error": "Не удалось декодировать изображение."}, status=501)
+            return Response(response={"error: Не удалось декодировать изображение."}, status=501)
         elif code == 2:
-            return Response(response={"error": "Лицо не обнаружено на изображении."}, status=502)
+            return Response(response={"error: Лицо не обнаружено на изображении."}, status=502)
         elif code == 3:
-            return Response(response={"error": "На изображении обнаружено несколько лиц."}, status=503)
+            return Response(response={"error: На изображении обнаружено несколько лиц."}, status=503)
         elif code == 4:
-            return Response(response={"error": "На изображении обнаружено неизвестное лицо."}, status=504)
+            return Response(response={"error: На изображении обнаружено неизвестное лицо."}, status=504)
         elif code == 5:
-            return Response(response={"error": "В системе не зарегистрирован ни один студент."}, status=507)
+            return Response(response={"error: В системе не зарегистрирован ни один студент."}, status=507)
         elif code == 6:
-            return Response(response={"error": "Не найдены подходящие студенты."}, status=506)
+            return Response(response={"error: Не найдены подходящие студенты."}, status=506)
         else:
-            return Response(response={"error": "Internal Server Error"}, status=500)
+            return Response(response={"error: Internal Server Error"}, status=500)
