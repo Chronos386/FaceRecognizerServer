@@ -25,6 +25,7 @@ from source_code.api_connection.send_models.send_subject import SendSubject
 from source_code.api_connection.send_models.send_teacher import SendTeacher
 from source_code.api_connection.send_models.send_account import SendAccount
 from source_code.db_connection.db_models.departments_db import DepartmentsDB
+from source_code.api_connection.analytics_processor import AnalyticsProcessor
 from source_code.api_connection.send_models.send_students import SendStudents
 from source_code.api_connection.send_models.send_schedule import SendSchedule
 from source_code.api_connection.send_models.send_buildings import SendBuildings
@@ -36,9 +37,10 @@ from source_code.api_connection.send_models.send_device_message import SendDevic
 
 
 class ApiConnector:
-    def __init__(self, db_class: DBClass, face_recognizer: FaceRecognizer):
+    def __init__(self, db_class: DBClass, face_recognizer: FaceRecognizer, processor: AnalyticsProcessor):
         self.db_class = db_class
         self.face_recognizer = face_recognizer
+        self.processor = processor
 
     #  |=========================Приватная функция для получения начала и конца недели=========================|
     @staticmethod
@@ -879,3 +881,59 @@ class ApiConnector:
                 schedule_id=attendance.schedule_id).toDict()
                                     )
         return 200, json.dumps(attendance_dicts, ensure_ascii=False)
+
+    #  |==========================================Аналитика==========================================|
+    # 1. Получение динамики посещаемости университета
+    def getUniversityAttendanceDynamic(self, start_date: date, end_date: date) -> str:
+        data = self.processor.get_university_dynamic(start_date, end_date)
+        return json.dumps([item.toDict() for item in data], ensure_ascii=False)
+
+    # 2. Получение динамики посещаемости группы
+    def getGroupAttendanceDynamic(self, group_id: int, start_date: date, end_date: date) -> str:
+        data = self.processor.get_group_dynamic(group_id, start_date, end_date)
+        return json.dumps([item.toDict() for item in data], ensure_ascii=False)
+
+    # 3. Кластеризация студентов группы
+    def getGroupClusters(self, group_id: int, start_date: date, end_date: date) -> str:
+        clusters = self.processor.cluster_group_students(group_id, start_date, end_date)
+        result = {
+            "clusters": {
+                name: [s.toDict() for s in students]
+                for name, students in clusters.items()
+            }
+        }
+        return json.dumps(result, ensure_ascii=False)
+
+    # 4. Анализ институтов
+    def getInstitutesAnalysis(self, start_date: date, end_date: date) -> str:
+        analysis = self.processor.analyze_institutes_attendance(start_date, end_date)
+        return json.dumps([a.toDict() for a in analysis], ensure_ascii=False)
+
+    # 5. Топ преподавателей по посещаемости
+    def getTopTeachersAttendance(self, start_date: date, end_date: date) -> str:
+        top_teachers = self.processor.get_top_teachers_attendance(start_date, end_date)
+        if not top_teachers:
+            return json.dumps([], ensure_ascii=False)
+        return json.dumps([t.toDict() for t in top_teachers], ensure_ascii=False)
+
+    # 6. Топ студентов по пропускам
+    def getTopStudentsAbsences(self, start_date: date, end_date: date) -> str:
+        top_students = self.processor.get_top_students_absences(start_date, end_date)
+        if not top_students:
+            return json.dumps([], ensure_ascii=False)
+        return json.dumps([s.toDict() for s in top_students], ensure_ascii=False)
+
+    # 7. Топ групп по пропускам
+    def getTopGroupsAbsences(self, start_date: date, end_date: date) -> str:
+        top_groups = self.processor.get_top_groups_absences(start_date, end_date)
+        if not top_groups:
+            return json.dumps([], ensure_ascii=False)
+        return json.dumps([g.toDict() for g in top_groups], ensure_ascii=False)
+
+    # 8. Топ групп по посещаемости
+    def getTopGroupsAttendance(self, start_date: date, end_date: date) -> str:
+        top_groups = self.processor.get_top_groups_by_attendance(start_date, end_date)
+        if not top_groups:
+            return json.dumps([], ensure_ascii=False)
+        result = [group.toDict() for group in top_groups]
+        return json.dumps(result, ensure_ascii=False)

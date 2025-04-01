@@ -248,6 +248,12 @@ class DBClass:
             return None
         return group_db
 
+    def getAllGroups(self):
+        groups_db: List[Type[GroupsDB]] = (self.session.query(GroupsDB).all())
+        if groups_db is None:
+            return None
+        return groups_db
+
     def getAllGroupsByInstitute(self, institute_id: int):
         groups_db: List[Type[GroupsDB]] = (self.session.query(GroupsDB).filter_by(institute_id=institute_id).all())
         if groups_db is None:

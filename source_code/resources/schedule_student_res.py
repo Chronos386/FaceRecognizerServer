@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask import Response, request
 from source_code.resources.main_res import MainRes
 

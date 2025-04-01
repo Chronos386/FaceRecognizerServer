@@ -16,7 +16,7 @@ scipy
 insightface
 opencv-python
 onnxruntime
-onnxruntime-gpu
+# onnxruntime-gpu
 onnx
 
 numpy
