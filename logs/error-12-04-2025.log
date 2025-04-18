@@ -1,0 +1,142 @@
+2025-04-12 14:48:18 - ERROR - Необработанная ошибка: (pg8000.exceptions.InterfaceError) Can't create a connection to host localhost and port 5432 (timeout is None and source_address is None).
+(Background on this error at: https://sqlalche.me/e/20/rvf5)
+Traceback (most recent call last):
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/core.py", line 206, in _make_socket
+    sock = socket.create_connection((host, port), timeout, source_address)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 180, in _do_get
+    self._dec_overflow()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/__init__.py", line 111, in connect
+    return Connection(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/legacy.py", line 443, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/core.py", line 320, in __init__
+    self.channel_binding, self._usock = _make_socket(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/core.py", line 208, in _make_socket
+    raise InterfaceError(
+pg8000.exceptions.InterfaceError: Can't create a connection to host localhost and port 5432 (timeout is None and source_address is None).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/resources/attendance_group_teacher_res.py", line 9, in post
+    acc_id, error_response = self.check_user_access(hash_user)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/resources/main_res.py", line 32, in check_user_access
+    acc_id: Optional[int] = self.api_connector.getAccIdByHash(hash_admin)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/api_connection/api_connector.py", line 208, in getAccIdByHash
+    account: Optional[AccountsDB] = self.db_class.getAccByHash(key)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/db_connection/db_class.py", line 99, in getAccByHash
+    hash_db: Optional[HashesDB] = self.session.query(HashesDB).filter_by(hash=hash_key).first()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2728, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2237, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2106, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3278, in connect
+    return self._connection_cls(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 180, in _do_get
+    self._dec_overflow()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/__init__.py", line 111, in connect
+    return Connection(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/legacy.py", line 443, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/core.py", line 320, in __init__
+    self.channel_binding, self._usock = _make_socket(
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/pg8000/core.py", line 208, in _make_socket
+    raise InterfaceError(
+sqlalchemy.exc.InterfaceError: (pg8000.exceptions.InterfaceError) Can't create a connection to host localhost and port 5432 (timeout is None and source_address is None).
+(Background on this error at: https://sqlalche.me/e/20/rvf5)
+
+
+2025-04-12 23:45:57 - ERROR - На изображении обнаружено несколько лиц
+NoneType: None
+
+

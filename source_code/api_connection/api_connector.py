@@ -810,18 +810,18 @@ class ApiConnector:
             return 200
         return 500
 
-    def martAttendanceByTeacher(self, acc_id: int, student_id: int, schedule_id: int, status: bool) -> int:
-        teacher: Optional[TeachersDB] = self.db_class.getTeacherByAccID(acc_id)
-        if teacher is None:
-            return 401
+    def martAttendanceByTeacher(self, student_id: int, schedule_id: int, status: bool) -> int:
+        # teacher: Optional[TeachersDB] = self.db_class.getTeacherByAccID(acc_id)
+        # if teacher is None:
+        #     return 401
         student = self.db_class.getStudentByID(student_id)
         if student is None:
             return 500
         schedule: Optional[ScheduleDB] = self.db_class.getScheduleByID(schedule_id)
         if schedule is None:
             return 500
-        if teacher.id != schedule.teacher_id:
-            return 403
+        # if teacher.id != schedule.teacher_id:
+        #     return 403
         self.db_class.markAttendance(student.id, schedule.id, status)
         return 200
 
@@ -837,15 +837,15 @@ class ApiConnector:
             for student in students_without_attendance:
                 self.db_class.markAttendance(student.id, schedule.id, status=False)
 
-    def getAttendanceGroupBySchedule(self, acc_id: int, schedule_id: int) -> Tuple[int, Optional[str]]:
-        teacher: Optional[TeachersDB] = self.db_class.getTeacherByAccID(acc_id)
-        if teacher is None:
-            return 401, None
+    def getAttendanceGroupBySchedule(self, schedule_id: int) -> Tuple[int, Optional[str]]:
+        # teacher: Optional[TeachersDB] = self.db_class.getTeacherByAccID(acc_id)
+        # if teacher is None:
+        #     return 401, None
         schedule: Optional[ScheduleDB] = self.db_class.getScheduleByID(schedule_id)
         if schedule is None:
             return 500, None
-        if schedule.teacher_id != teacher.id:
-            return 403, None
+        # if schedule.teacher_id != teacher.id:
+        #     return 403, None
         attendance_db: Optional[List[AttendanceDB]] = self.db_class.getAttendanceByScheduleId(schedule_id)
         if attendance_db is None:
             return 500, None

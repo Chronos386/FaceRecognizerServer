@@ -1,0 +1,52 @@
+2025-03-30 02:28:53 - ERROR - Необработанная ошибка: Union[arg, ...]: each arg must be a type. Got <sqlalchemy.sql.elements.BinaryExpression object at 0x7f9b30e7a970>.
+Traceback (most recent call last):
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/resources/university_attendance_dynamic_res.py", line 16, in post
+    json_model = self.api_connector.getUniversityAttendanceDynamic(dates[0], dates[1])
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/api_connection/api_connector.py", line 888, in getUniversityAttendanceDynamic
+    data = self.processor.get_university_dynamic(start_date, end_date)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/api_connection/analytics_processor.py", line 57, in get_university_dynamic
+    return self._get_daily_dynamic(start_date, end_date)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/api_connection/analytics_processor.py", line 31, in _get_daily_dynamic
+    func.sum(case(Union[(AttendanceDB.status == True, 1)], else_=0)).label('attended'),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/typing.py", line 261, in inner
+    return func(*args, **kwds)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/typing.py", line 358, in __getitem__
+    parameters = tuple(_type_check(p, msg) for p in parameters)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/typing.py", line 358, in <genexpr>
+    parameters = tuple(_type_check(p, msg) for p in parameters)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/typing.py", line 149, in _type_check
+    raise TypeError(f"{msg} Got {arg!r:.100}.")
+TypeError: Union[arg, ...]: each arg must be a type. Got <sqlalchemy.sql.elements.BinaryExpression object at 0x7f9b30e7a970>.
+
+
+2025-03-30 14:36:51 - ERROR - Необработанная ошибка: 'Стабильные'
+Traceback (most recent call last):
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/.venv/lib/python3.8/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/resources/group_clusters_res.py", line 14, in post
+    json_model = self.api_connector.getGroupClusters(group_id, dates[0], dates[1])
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/api_connection/api_connector.py", line 898, in getGroupClusters
+    clusters = self.processor.cluster_group_students(group_id, start_date, end_date)
+  File "/Users/chronos_386/PycharmProjects/FaceRecognizerServer/source_code/api_connection/analytics_processor.py", line 85, in cluster_group_students
+    cluster_data[cluster].append(
+KeyError: 'Стабильные'
+
+

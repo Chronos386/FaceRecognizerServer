@@ -6,7 +6,7 @@ class AttendanceTeacherRes(MainRes):
     # Изменение статуса посещаемости студента
     def post(self):
         hash_user: str = request.form.get('hash')
-        acc_id, error_response = self.check_user_access(hash_user)
+        acc_id, error_response = self.check_admin_access(hash_user)
         if error_response:
             return error_response
 
@@ -14,7 +14,7 @@ class AttendanceTeacherRes(MainRes):
         schedule_id: int = int(request.form.get('schedule_id'))
         status: bool = (request.form.get('status') == "true")
 
-        code = self.api_connector.martAttendanceByTeacher(acc_id, student_id, schedule_id, status)
+        code = self.api_connector.martAttendanceByTeacher(student_id, schedule_id, status)
         if code == 200:
             self.app_metrica_reporter.sendEvent(event_name="ChangeStudentAttendance", event_json={
                 "hash": hash_user,

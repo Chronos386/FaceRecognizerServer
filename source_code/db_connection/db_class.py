@@ -163,10 +163,17 @@ class DBClass:
         embeddings: List[Type[FaceEmbeddingsDB]] = self.session.query(FaceEmbeddingsDB).filter_by(student_id=student_id).all()
         for embedding in embeddings:
             self.session.delete(embedding)
+        attendance: List[Type[AttendanceDB]] = self.session.query(AttendanceDB).filter_by(student_id=student_id).all()
+        for attend in attendance:
+            self.session.delete(attend)
         self.session.commit()
         self.session.delete(student_db)
         self.session.commit()
         account: Optional[AccountsDB] = self.session.query(AccountsDB).filter_by(id=student_db.acc_id).first()
+        hashes: List[Type[HashesDB]] = self.session.query(HashesDB).filter_by(acc_id=account.id).all()
+        for hash_ in hashes:
+            self.session.delete(hash_)
+        self.session.commit()
         self.session.delete(account)
         self.session.commit()
         return True
@@ -237,6 +244,10 @@ class DBClass:
         self.session.delete(teacher_db)
         self.session.commit()
         account: Optional[AccountsDB] = self.session.query(AccountsDB).filter_by(id=teacher_db.acc_id).first()
+        hashes: List[Type[HashesDB]] = self.session.query(HashesDB).filter_by(acc_id=account.id).all()
+        for hash_ in hashes:
+            self.session.delete(hash_)
+        self.session.commit()
         self.session.delete(account)
         self.session.commit()
         return True
@@ -430,6 +441,7 @@ class DBClass:
             self.deleteSchedule(schedule.id)
         self.session.commit()
         self.session.delete(subject_db)
+        self.session.commit()
         return True
 
     #  |============================================Корпус============================================|

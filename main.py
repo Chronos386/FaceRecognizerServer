@@ -60,7 +60,7 @@ from source_code.resources.admin_departments_actions_res import AdminDepartments
 from source_code.resources.university_attendance_dynamic_res import UniversityAttendanceDynamicRes
 
 #  Настройка сервера
-application = Flask(__name__)
+application = Flask(__name__, static_folder='web', static_url_path='/')
 pictures_folder = 'files/pictures'
 application.config['SESSION_TYPE'] = 'filesystem'
 application.config['PROPAGATE_EXCEPTIONS'] = True
@@ -329,9 +329,15 @@ def handleException(e):
 
 
 #  Начальная страница
-@application.route("/")
-def index():
-    return send_file('files/index.html')
+@application.route('/', defaults={'path': ''})
+@application.route('/<path:path>')
+def serve_flutter_app(path):
+
+    # Если запрошенный путь существует среди статических файлов, отдаём его
+    if path != "" and os.path.exists(os.path.join(application.static_folder, path)):
+        return application.send_static_file(path)
+    # В противном случае — возвращаем index.html для обработки маршрутизации Flutter‑приложением
+    return application.send_static_file('index.html')
 
 
 #  Иконка сайта
@@ -379,4 +385,4 @@ if __name__ == '__main__':
 
     # Запуск сервера
     # application.run(host='127.0.0.1', port=80, debug=False) host="172.20.10.13", port=6583
-    serve(application, host='127.0.0.1', port=6583, threads=8)
+    serve(application, host='172.20.10.13', port=6583, threads=8)
