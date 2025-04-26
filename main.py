@@ -385,4 +385,4 @@ if __name__ == '__main__':
 
     # Запуск сервера
     # application.run(host='127.0.0.1', port=80, debug=False) host="172.20.10.13", port=6583
-    serve(application, host='127.0.0.1', port=6582, threads=8)
+    serve(application, host='0.0.0.0', port=6583, threads=8)
