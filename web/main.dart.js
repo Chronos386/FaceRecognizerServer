@@ -51415,7 +51415,7 @@ i=new A.X9(A.a([],t.Iq),A.a([],t.cS))
 i.ao3(a,B.mk)
 m=i
 s=7
-return A.v(n.a.OB(0,"http://172.20.10.13:6583"+d,m,A.bsO(c,new A.aBG()),t.z),$async$xl)
+return A.v(n.a.OB(0,"http://0.0.0.0:6583"+d,m,A.bsO(c,new A.aBG()),t.z),$async$xl)
 case 7:l=a4
 if(l.c===200){if(e!=null){k=e.$1(l)
 q=new A.aK(k,a1.h("aK<0>"))
@@ -51876,7 +51876,7 @@ ly(a,b,c){return this.avH(a,b,c)},
 avH(a7,a8,a9){var s=0,r=A.t(t.eU),q,p=2,o,n=this,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6
 var $async$ly=A.o(function(b0,b1){if(b0===1){o=b1
 s=p}while(true)switch(s){case 0:p=4
-m=A.bsz("POST",A.kj("http://172.20.10.13:6583/api/admin/embeddings/"))
+m=A.bsz("POST",A.kj("http://0.0.0.0:6583/api/admin/embeddings/"))
 s=7
 return A.v(n.FW(a9),$async$ly)
 case 7:l=b1

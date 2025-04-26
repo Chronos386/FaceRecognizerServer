@@ -22,7 +22,7 @@ from source_code.db_connection.db_models.face_embeddings_db import FaceEmbedding
 
 class DBClass:
     def __init__(self):
-        self.engine = create_engine("postgresql+pg8000://postgres:Chronos386@localhost/face_recognition_db")
+        self.engine = create_engine("postgresql+pg8000://postgres:@localhost/face_recognition_db")
         self.Session = sessionmaker(bind=self.engine)
         self.session = self.Session()
 
