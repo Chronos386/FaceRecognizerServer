@@ -22,7 +22,7 @@ from source_code.db_connection.db_models.face_embeddings_db import FaceEmbedding
 
 class DBClass:
     def __init__(self):
-        self.engine = create_engine("postgresql+psycopg2://postgres:123456@localhost/face_recognition_db")
+        self.engine = create_engine("postgresql+pg8000://postgres:@localhost/face_recognition_db")
         self.Session = sessionmaker(bind=self.engine)
         self.session = self.Session()
 
@@ -140,7 +140,6 @@ class DBClass:
         student_db: Optional[StudentsDB] = self.session.query(StudentsDB).filter_by(acc_id=acc_id).first()
         if student_db is not None:
             return None
-
         new_id: int = self.__findFirstFreeID(StudentsDB)
         student_new = StudentsDB(id=new_id, name=name, acc_id=acc_id, group_id=group_id)
         self.session.add(student_new)
